@@ -17,31 +17,29 @@ Use [shadcn/ui](https://ui.shadcn.com) or [shadcn-vue](https://shadcn-vue.com) o
 
 ## Usage
 
-> 🌈 Starting from v1.0, unocss-preset-shadcn supports presetWind4 v4 by default. If you are using presetWind3, you can import the legacy preset from `unocss-preset-shadcn/v3`, see the [v3 docs](./README_V3.md).
+> 🌈 Starting from v1.0, unocss-preset-shadcn supports presetWind4 v4 by default. If you are using presetWind3, you can import the legacy preset from `unocss-preset-shadcn/v3`
 
 Follow the official guide to set up [shadcn/ui](https://ui.shadcn.com/docs/installation/vite), [shadcn-vue](https://www.shadcn-vue.com/docs/installation/vite.html), or [shadcn-svelte](https://www.shadcn-svelte.com/docs/installation), or [SolidUI](https://www.solid-ui.com/docs/installation/manual). Replace the step to set up Tailwind CSS with [UnoCSS](https://unocss.dev/integrations/vite).
 
 Install the [Tailwind Browser Style Reset](https://unocss.dev/guide/style-reset#tailwind).
 
-Then install `unocss-preset-shadcn` and `unocss-preset-animations`, and update your `uno.config.ts`:
+Then install `unocss-preset-shadcn` and `unocss-preset-animations`, and update your `unocss.config.ts`:
 
 ```bash
-ni -D unocss unocss-preset-animations unocss-preset-shadcn
+ni @unocss/reset
+ni -D unocss @unocss/preset-wind3 unocss-preset-animations unocss-preset-shadcn
 ```
 
 ```ts
-// uno.config.ts
-import { defineConfig, presetWind4 } from "unocss";
+// unocss.config.ts
+import { presetWind } from "@unocss/preset-wind3";
+import { defineConfig } from "unocss";
 import presetAnimations from "unocss-preset-animations";
-import { presetShadcn } from "unocss-preset-shadcn";
+import { presetShadcn } from "unocss-preset-shadcn/v3";
 
 export default defineConfig({
   presets: [
-    presetWind4({
-      preflights: {
-        reset: true,
-      },
-    }),
+    presetWind(),
     presetAnimations(),
     presetShadcn(
       {
@@ -183,7 +181,8 @@ Svelte + shadcn-svelte
     "css": "src/App.css"
   },
   "aliases": {
-    "path": "~/*"
+    "components": "~/components/ui",
+    "utils": "~/utils"
   }
 }
 ```
@@ -197,7 +196,7 @@ If you want to use a dynamic theme, you can pass an array of theme objects to `p
 ```ts
 import { defineConfig, presetUno, UserConfig } from "unocss";
 import presetAnimations from "unocss-preset-animations";
-import { builtinColors, presetShadcn } from "unocss-preset-shadcn";
+import { builtinColors, presetShadcn } from "unocss-preset-shadcn/v3";
 
 export default defineConfig({
   presets: [
@@ -210,24 +209,6 @@ export default defineConfig({
 
 Add a theme sync script to your [index.html](./playground/index.html).
 To dynamically change the theme, you can create a [theme switch component](./playground/src/components/theme-switch.tsx).
-
-## Customization
-
-You can change the colors by overriding a theme using `oklch` values:
-
-```ts
-presetShadcn({
-  color: {
-    base: 'red',
-    light: {
-      primary: '0.723 0.219 149.579',
-    },
-    dark: {
-      primary: '0.696 0.17 162.48',
-    },
-  },
-}),
-```
 
 ## See also
 

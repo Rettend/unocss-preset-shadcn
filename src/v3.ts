@@ -9,7 +9,7 @@ import type { PresetShadcnThemeOptions } from './v3/types'
 export const builtinColors = themes.map(theme => theme.name)
 export const builtinRadiuses = [0, 0.3, 0.5, 0.75, 1] as const
 
-export function presetShadcnV3(
+export function presetShadcn(
   themeOptions: PresetShadcnThemeOptions = {},
   controlOptions: PresetShadcnControlOptions = {},
 ): Preset<Theme> {
@@ -123,4 +123,4 @@ export function presetShadcnV3(
   }
 }
 
-export default presetShadcnV3
+export default presetShadcn

@@ -7,7 +7,7 @@ import { themes as themesV3 } from '../../src/v3/themes'
 
 const unoGenerator = await createGenerator()
 
-describe('presetShadcnV3()-execute-getCSS', () => {
+describe('presetShadcn()-execute-getCSS', () => {
   it('default options', async () => {
     const presetReturn = presetShadcn()
     await expect(presetReturn).toMatchFileSnapshot('../snapshot/presetShadcn()-default.json')
