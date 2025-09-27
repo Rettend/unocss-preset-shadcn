@@ -1,4 +1,5 @@
 type ThemeColorString = `${number} ${number}% ${number}%`
+
 export const themeCSSVarKeys = [
   'background',
   'foreground',
@@ -33,6 +34,7 @@ export const themeCSSVarKeys = [
   'sidebar-border',
   'sidebar-ring',
 ] as const
+
 export type ThemeCSSVarKey = (typeof themeCSSVarKeys)[number]
 
 export type ThemeCSSVars = Record<ThemeCSSVarKey, ThemeColorString>

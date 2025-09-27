@@ -1,8 +1,8 @@
 import { mergeDeep } from 'unocss'
 
-import type { ThemeCSSVarKey, ThemeCSSVars, ThemeCSSVarsVariant, themes } from './themes/v3'
-import { themeCSSVarKeys } from './themes/v3'
-import type { ColorOptions, PresetShadcnThemeOptions } from './types'
+import type { ThemeCSSVarKey, ThemeCSSVars, ThemeCSSVarsVariant, themes } from '../v3/themes'
+import { themeCSSVarKeys } from '../v3/themes'
+import type { ColorOptions, PresetShadcnThemeOptions } from '../v3/types'
 
 function generateColorCSSVars(color: ThemeCSSVars) {
   return Object.entries(color)
@@ -38,7 +38,7 @@ ${generateRadiusCSSVars(radius)}
 `
 }
 
-export function generateGlobalStylesV3() {
+export function generateGlobalStyles() {
   return `
 * {
   border-color: hsl(var(--border));
@@ -49,19 +49,6 @@ body {
   background: hsl(var(--background));
 }
 `
-}
-
-export function generateGlobalStyles() {
-  return `
-* {
-  border-color: oklch(var(--border));
-}
-
-body {
-  color: oklch(var(--foreground));
-  background: oklch(var(--background));
-}
-  `
 }
 
 function getBuiltInTheme(name: string, themesRaw: typeof themes): ThemeCSSVarsVariant {

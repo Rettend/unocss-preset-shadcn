@@ -1,13 +1,13 @@
 import { createGenerator } from 'unocss'
 import { describe, expect, it } from 'vitest'
 
-import { generateCSSVars } from '../src/generate'
-import { themes as themesV3 } from '../src/themes/v3'
 import presetShadcn from '../src/v3'
+import { generateCSSVars } from '../src/v3/generate'
+import { themes as themesV3 } from '../src/v3/themes'
 
 const unoGenerator = await createGenerator()
 
-describe('presetShadcn()-execute-getCSS', () => {
+describe('presetShadcnV3()-execute-getCSS', () => {
   it('default options', async () => {
     const presetReturn = presetShadcn()
     await expect(presetReturn).toMatchFileSnapshot('snapshot/presetShadcn()-default.json')
@@ -68,7 +68,7 @@ describe('presetShadcn()-execute-getCSS', () => {
   })
 })
 
-describe('generate-theme-css-var', () => {
+describe('generate-theme-css-var (v3)', () => {
   it('built in themes', async () => {
     await expect(
       generateCSSVars({

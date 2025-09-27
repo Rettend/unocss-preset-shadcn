@@ -1,10 +1,9 @@
 import type { Preset } from 'unocss'
 import type { Theme } from 'unocss/preset-mini'
 
-import { generateCSSVars, generateGlobalStyles } from './generate'
-import type { themes as themesV3 } from './themes/v3'
-import { themes } from './themes/v4'
 import type { PresetShadcnControlOptions, PresetShadcnThemeOptions } from './types'
+import { generateCSSVars, generateGlobalStyles } from './v4/generate'
+import { themes } from './v4/themes'
 
 export const builtinColors = themes.map(theme => theme.name)
 export const builtinRadiuses = [0, 0.3, 0.5, 0.75, 1] as const
@@ -25,7 +24,7 @@ export function presetShadcn(
           @keyframes shadcn-collapsible-down { from{ height: 0 } to { height: var(--${componentLibrary}-collapsible-content-height)} }
           @keyframes shadcn-collapsible-up { from{ height: var(--${componentLibrary}-collapsible-content-height)} to { height: 0 } }
 
-          ${generateCSSVars(themeOptions, themes as unknown as typeof themesV3)}
+          ${generateCSSVars(themeOptions, themes)}
 
           ${globals ? generateGlobalStyles() : ''}
         `,

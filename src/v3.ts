@@ -1,9 +1,10 @@
 import type { Preset } from 'unocss'
 import type { Theme } from 'unocss/preset-mini'
 
-import { generateCSSVars, generateGlobalStylesV3 as generateGlobalStyles } from './generate'
-import { themes } from './themes/v3'
-import type { PresetShadcnControlOptions, PresetShadcnThemeOptions } from './types'
+import type { PresetShadcnControlOptions } from './types'
+import { generateCSSVars, generateGlobalStyles as generateGlobalStyles } from './v3/generate'
+import { themes } from './v3/themes'
+import type { PresetShadcnThemeOptions } from './v3/types'
 
 export const builtinColors = themes.map(theme => theme.name)
 export const builtinRadiuses = [0, 0.3, 0.5, 0.75, 1] as const

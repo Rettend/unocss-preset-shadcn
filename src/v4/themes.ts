@@ -1,4 +1,4 @@
-import type { ThemeCSSVarKey } from './v3'
+import type { ThemeCSSVarKey } from '../v3/themes'
 
 type ThemeColorString = `${number} ${number} ${number}` | `${number} ${number} ${number} / ${number}%`
 
